@@ -27,7 +27,7 @@
 #              notify => Exec["reload-apache2"]
 # }
 
-define config_file ($content = '', $source = '', $ensure = 'present') {
+define common::config_file ($content = '', $source = '', $ensure = 'present') {
 	file { $name:
 		ensure => $ensure,
 		# keep old versions on the server

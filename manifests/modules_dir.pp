@@ -6,7 +6,7 @@
 
 # Usage:
 # modules_dir { ["common", "common/dir1", "common/dir2" ]: }
-define modules_dir (
+define common::modules_dir (
 		$mode = 0644, $owner = root, $group = 0
 	)
 {
@@ -16,7 +16,7 @@ define modules_dir (
 	} else {
 		file {
 			"/var/lib/puppet/modules/${name}":
-				source => [ "puppet:///modules/${name}/modules_dir", "puppet:///modules/common/empty"],
+				source => [ "puppet:///${name}/modules_dir", "puppet:///common/empty"],
 				checksum => mtime,
 				# ignore the placeholder
 				ignore => '\.ignore', 
